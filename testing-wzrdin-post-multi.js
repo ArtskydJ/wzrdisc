@@ -37,16 +37,29 @@ function attemptCompiled(opts) {
 
 var rememberLast = null
 function remember(str) {
-	if (rememberLast === null) rememberLast = str
-	else console.log(rememberLast === str ? 'not yet' : 'HOORAY!!!')
+	if (rememberLast === null) {
+		rememberLast = str
+	} else {
+		var same = rememberLast === str
+		var str = 'ASR compiled w/ and w/o fullPaths are ' + (same ? 'identical.' : 'different!')
+		console.log(colorize(str, !same))
+	}
 }
 
 function attemptSite() {
 	https.get('https://wzrd.in/index.html', function (res) {
 		var body = ''
 		res.on('data', buf => body += buf )
-		res.on('end', () =>
-			console.log(body.includes('fullPaths') ? 'new site' : 'not yet')
-		)
+		res.on('end', () => {
+			var ok = body.includes('fullPaths')
+			var str = 'The word "fullPaths" is ' + (ok ? '' : 'not ') + 'on the site.'
+			console.log(colorize(str, ok))
+		})
 	})
+}
+
+function colorize(str, ok) {
+	// If ok == true, then str is turned green
+	// If ok == false, then str is turned red
+	return '\033[1;3' + (ok ? '2' : '1') + ';40m' + str + '\033[0m'
 }
