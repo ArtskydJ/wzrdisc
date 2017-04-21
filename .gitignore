@@ -1,0 +1,3 @@
+node_modules
+!wzrd.in/node_modules/scopedfs
+!wzrd.in/node_modules/temp
