@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node attempt.js"
   },
   "repository": {
     "type": "git",
@@ -15,8 +15,12 @@
   "bugs": {
     "url": "https://github.com/ArtskydJ/wzrdisc/issues"
   },
+  "browser": {
+    "request": "xhr"
+  },
   "homepage": "https://github.com/ArtskydJ/wzrdisc#readme",
   "dependencies": {
+    "disc": "niallwingham/disc#bc7b980ac3",
     "xhr": "^2.2.0"
   }
 }
