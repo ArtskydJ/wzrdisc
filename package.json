@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node attempt.js",
-    "postinstall": "pushd wzrd.in && npm i && popd"
+    "postinstall": "cd wzrd.in && npm i && cd .."
   },
   "repository": {
     "type": "git",
